@@ -156,7 +156,7 @@ Partial Class AboutBox
         Me.OKButton.TabIndex = 0
         Me.OKButton.Text = "&OK"
         '
-        'AboutBox1
+        'AboutBox
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -167,8 +167,8 @@ Partial Class AboutBox
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "AboutBox1"
-        Me.Padding = New System.Windows.Forms.Padding(10, 10, 10, 10)
+        Me.Name = "AboutBox"
+        Me.Padding = New System.Windows.Forms.Padding(10)
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "AboutBox1"

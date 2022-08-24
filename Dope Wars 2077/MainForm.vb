@@ -5,22 +5,22 @@ Public Class MainWin
     ' Game Variables
     '
 
-    Dim SpicePriceRand As Integer
-    Dim TBloodPriceRand As Integer
-    Dim NeoPsybinPriceRand As Integer
-    Dim VooDooPriceRand As Integer
-    Dim GlitterPriceRand As Integer
-    Dim CyberStimPriceRand As Integer
-    Dim SloMoPriceRand As Integer
-    Dim SynthenylPriceRand As Integer
+    Public SpicePriceRand As Integer
+    Public TBloodPriceRand As Integer
+    Public NeoPsybinPriceRand As Integer
+    Public VooDooPriceRand As Integer
+    Public GlitterPriceRand As Integer
+    Public CyberStimPriceRand As Integer
+    Public SloMoPriceRand As Integer
+    Public SynthenylPriceRand As Integer
 
-    Dim DrugPriceRandom(7) As Integer
-    Dim DrugPriceRandom2(7) As Integer
-    Dim DrugPriceRandom3(7) As Integer
-    Dim DrugPriceRandom4(7) As Integer
-    Dim DrugPriceRandom5(7) As Integer
+    Public DrugPriceRandom(7) As Integer
+    Public DrugPriceRandom2(7) As Integer
+    Public DrugPriceRandom3(7) As Integer
+    Public DrugPriceRandom4(7) As Integer
+    Public DrugPriceRandom5(7) As Integer
 
-    Enum DrugNameID As UShort
+    Public Enum DrugNameID As UShort
         Spice
         TigerBlood
         NeoPsybin
@@ -31,7 +31,7 @@ Public Class MainWin
         Synthenyl
     End Enum
 
-    Enum GameCities As UShort
+    Public Enum GameCities As UShort
         Watson
         Heywood
         CityCenter
@@ -42,29 +42,28 @@ Public Class MainWin
         Docks
     End Enum
 
-    Dim PlayerCash As Long
-    Dim PlayerBank As Long
-    Dim PlayerDebt As Long
-    Dim PlayerDebtPlusInterest As Long
-    Dim PlayerLife As Integer
-    Dim PlayerDay As Integer
-    Dim PlayerLocation As GameCities
-    Dim PlayerBackpackSlotNames(8) As String
-    Dim PlayerBackpackSlotTotal(8) As Integer
-    Dim PlayerBackpackSlotPrice(8) As Integer
-    Dim PlayerBackpackTotal As Integer
+    Public PlayerCash As Long
+    Public PlayerDebt As Long
+    Public PlayerBank As Long
+    Public PlayerDebtPlusInterest As Long
+    Public PlayerLife As Integer
+    Public PlayerDay As Integer
+    Public PlayerLocation As GameCities
+    Public PlayerBackpackSlotNames(8) As String
+    Public PlayerBackpackSlotTotal(8) As Integer
+    Public PlayerBackpackSlotPrice(8) As Integer
+    Public PlayerBackpackTotal As Integer
 
-    Dim DrugPricesToday(8) As Integer
-    Dim DrugPricesPrev(8) As Integer
-    Dim DrugPricesPrev2(8) As Integer
-    Dim DrugPricesPrev3(8) As Integer
-    Dim DrugPricesBuyCost(8) As Integer
+    Public DrugPricesToday(8) As Integer
+    Public DrugPricesPrev(8) As Integer
+    Public DrugPricesPrev2(8) As Integer
+    Public DrugPricesPrev3(8) As Integer
+    Public DrugPricesBuyCost(8) As Integer
 
-    Dim GameMaxDay As Integer = 30
+    Public GameMaxDay As Integer = 30
 
     Public Sub InitNewGame()
         SendEventText("> *************************")
-        SendEventText("> New Game Started.")
         SendEventText("> You nearly got smoked on that last job.")
         SendEventText("> Thankfully, Ripper Doc patched you up. Bad news is you owe him.")
         SendEventText("> Better go sell some drugs Choom, and get out of debt!")
@@ -73,7 +72,7 @@ Public Class MainWin
         PlayerDay = 1
         PlayerCash = 2000
         PlayerBank = 0
-        PlayerDebt = 2000
+        PlayerDebt = 4000
         PlayerDebtPlusInterest = PlayerDebt
         DebtCalc() ' adds interest on day 1
 
@@ -113,47 +112,36 @@ Public Class MainWin
     Public Sub GeneratePricing()
         Randomize()
 
-        DrugPriceRandom(0) = Int((100 * Rnd()) + 5)
+        DrugPriceRandom(0) = Int((90 * Rnd()) + 5)
         DrugPriceRandom(1) = Int((250 * Rnd()) + 25)
-        DrugPriceRandom(2) = Int((600 * Rnd()) + 60)
-        DrugPriceRandom(3) = Int((1200 * Rnd()) + 125)
-        DrugPriceRandom(4) = Int((2000 * Rnd()) + 200)
-        DrugPriceRandom(5) = Int((4000 * Rnd()) + 600)
-        DrugPriceRandom(6) = Int((7000 * Rnd()) + 1500)
+        DrugPriceRandom(2) = Int((450 * Rnd()) + 50)
+        DrugPriceRandom(3) = Int((1050 * Rnd()) + 125)
+        DrugPriceRandom(4) = Int((2250 * Rnd()) + 250)
+        DrugPriceRandom(5) = Int((4950 * Rnd()) + 500)
+        DrugPriceRandom(6) = Int((6500 * Rnd()) + 1000)
         DrugPriceRandom(7) = Int((10000 * Rnd()) + 2000)
 
-        DrugPriceRandom2(0) = Int((100 * Rnd()) + 5)
+        DrugPriceRandom2(0) = Int((90 * Rnd()) + 5)
         DrugPriceRandom2(1) = Int((250 * Rnd()) + 25)
-        DrugPriceRandom2(2) = Int((600 * Rnd()) + 60)
-        DrugPriceRandom2(3) = Int((1200 * Rnd()) + 125)
-        DrugPriceRandom2(4) = Int((2000 * Rnd()) + 200)
-        DrugPriceRandom2(5) = Int((4000 * Rnd()) + 600)
-        DrugPriceRandom2(6) = Int((7000 * Rnd()) + 1500)
-        DrugPriceRandom2(7) = Int((10000 * Rnd()) + 2000)
+        DrugPriceRandom2(2) = Int((450 * Rnd()) + 50)
+        DrugPriceRandom2(3) = Int((1050 * Rnd()) + 125)
+        DrugPriceRandom2(4) = Int((2250 * Rnd()) + 250)
+        DrugPriceRandom2(5) = Int((5500 * Rnd()) + 500)
+        DrugPriceRandom2(6) = Int((7000 * Rnd()) + 1100)
+        DrugPriceRandom2(7) = Int((9000 * Rnd()) + 1800)
 
-        DrugPriceRandom3(0) = Int((100 * Rnd()) + 5)
-        DrugPriceRandom3(1) = Int((250 * Rnd()) + 25)
-        DrugPriceRandom3(2) = Int((600 * Rnd()) + 60)
-        DrugPriceRandom3(3) = Int((1200 * Rnd()) + 125)
-        DrugPriceRandom3(4) = Int((2000 * Rnd()) + 200)
-        DrugPriceRandom3(5) = Int((4000 * Rnd()) + 600)
-        DrugPriceRandom3(6) = Int((7000 * Rnd()) + 1500)
-        DrugPriceRandom3(7) = Int((10000 * Rnd()) + 2000)
-
-
+        DrugPriceRandom3(0) = Int((80 * Rnd()) + 1)
+        DrugPriceRandom3(1) = Int((150 * Rnd()) + 20)
+        DrugPriceRandom3(2) = Int((550 * Rnd()) + 40)
+        DrugPriceRandom3(3) = Int((1200 * Rnd()) + 100)
+        DrugPriceRandom3(4) = Int((2000 * Rnd()) + 180)
+        DrugPriceRandom3(5) = Int((4500 * Rnd()) + 500)
+        DrugPriceRandom3(6) = Int((6600 * Rnd()) + 1200)
+        DrugPriceRandom3(7) = Int((11000 * Rnd()) + 1800)
 
         For i As Integer = 0 To 7 Step 1
             DrugPriceRandom4(i) = (DrugPriceRandom(i) + DrugPriceRandom2(i) + DrugPriceRandom3(i)) / 3
         Next
-
-        'SpicePriceRand = Int((100 * Rnd()) + 5)
-        'TBloodPriceRand = Int((250 * Rnd()) + 25)
-        'NeoPsybinPriceRand = Int((600 * Rnd()) + 60)
-        'VooDooPriceRand = Int((1200 * Rnd()) + 125)
-        'GlitterPriceRand = Int((2000 * Rnd()) + 200)
-        'CyberStimPriceRand = Int((4000 * Rnd()) + 600)
-        'SloMoPriceRand = Int((7000 * Rnd()) + 1500)
-        'SynthenylPriceRand = Int((10000 * Rnd()) + 2000)
 
         DrugPriceListBox.Items.Clear()
         For j As Integer = 0 To 7 Step 1
@@ -243,25 +231,34 @@ Public Class MainWin
         End Select
     End Sub
 
+    Public Sub PlayLoopingBackgroundSoundFile()
+        My.Computer.Audio.Play("C:\dwaudio.wav",
+        AudioPlayMode.BackgroundLoop)
+    End Sub
+
     ' ---------------------------
     ' Window Load
     ' ---------------------------
 
     Private Sub MainWin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         InitNewGame()
+        'PlayLoopingBackgroundSoundFile()
     End Sub
 
-    Public Sub CheckForEndGame()
+    Public Function CheckForEndGame()
         If PlayerDay >= GameMaxDay Then
             ' run end game
 
             Dim result1 As DialogResult = MessageBox.Show("New Game or Quit?", "Game Over!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
             If result1 = False Then
                 CloseGame()
+                Return 0
             End If
             InitNewGame()
+            Return 1
         End If
-    End Sub
+        Return 0
+    End Function
 
     ' ----------------------------
     ' Today's Price Button
@@ -314,7 +311,7 @@ Public Class MainWin
                 DrugPriceDiff.Items.Insert(k, "↑")
             End If
             If DrugPricesPrev(k) = DrugPricesToday(k) Then
-                DrugPriceDiff.Items.Insert(k, "▬")
+                DrugPriceDiff.Items.Insert(k, "=")
             End If
         Next
     End Sub
@@ -330,7 +327,7 @@ Public Class MainWin
                 DrugPriceDiff.Items.Insert(k, "↑")
             End If
             If DrugPricesToday(k) = DrugPricesPrev(k) Then
-                DrugPriceDiff.Items.Insert(k, "▬")
+                DrugPriceDiff.Items.Insert(k, "=")
             End If
         Next
     End Sub
@@ -489,18 +486,71 @@ Public Class MainWin
     ' --------------------
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Dim MessageText, Title
-        Dim MyValue As Long
-        MessageText = "How much money to deposit?"
+        Dim MyValue As String
+        MessageText = "How much cash to deposit?"
         Title = "Bank Deposit"
         MyValue = InputBox(MessageText, Title)
-
-        If PlayerCash < MyValue Then
-            SendEventText(":> Not enough cash. Enter exact amount.")
-            Return
+        If MyValue = "" Then
+            Exit Sub
         End If
-        If PlayerCash >= MyValue Then
-            PlayerBank += MyValue
-            PlayerCash -= MyValue
+        If PlayerCash < Int(MyValue) Then
+            SendEventText("> Not enough cash on hand. Enter exact amount.")
+            Exit Sub
+        End If
+        If PlayerCash >= Int(MyValue) Then
+            PlayerBank += Int(MyValue)
+            PlayerCash -= Int(MyValue)
+            UpdateGame()
+        End If
+    End Sub
+
+    ' ------------------------
+    ' ATM - Withdraw from Bank
+    ' --------------------------
+
+    Private Sub Withdraw_Click(sender As Object, e As EventArgs) Handles Withdraw.Click
+        Dim MessageText, Title
+        Dim MyValue As String
+        MessageText = "How much cash to withdraw?"
+        Title = "ATM Withdraw"
+        MyValue = InputBox(MessageText, Title)
+        If MyValue = "" Then
+            Exit Sub
+        End If
+        If PlayerBank < Int(MyValue) Then
+            SendEventText("> Not enough cash in the bank. Enter exact amount.")
+            Exit Sub
+        End If
+        If PlayerBank >= Int(MyValue) Then
+            PlayerCash += Int(MyValue)
+            PlayerBank -= Int(MyValue)
+            UpdateGame()
+        End If
+    End Sub
+    ' --------------------------
+    ' Pay Debt
+    ' --------------------------
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim MessageText, Title
+        Dim MyValue As String
+
+        MessageText = "How much cash to pay on debt??"
+        Title = "Loan Shark"
+        MyValue = InputBox(MessageText, Title)
+
+        If MyValue = "" Then
+            Exit Sub
+        End If
+
+        If PlayerCash < Int(MyValue) Then
+            SendEventText("> Not enough cash. Enter exact amount.")
+            Exit Sub
+        End If
+
+        If PlayerCash >= Int(MyValue) Then
+            PlayerCash -= Int(MyValue)
+            PlayerDebt -= Int(MyValue)
             UpdateGame()
         End If
     End Sub
@@ -510,19 +560,22 @@ Public Class MainWin
     ' --------------------------
     Private Sub Button11_MouseClick(sender As Object, e As MouseEventArgs) Handles Button11.MouseClick
         Dim var As Integer
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.Watson Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.Watson
         PlayerCityCur.Text = "Watson"
 
         GeneratePricing()
-
         Randomize()
         var = Int((100 * Rnd()) + 1)
         Select Case var
@@ -547,18 +600,23 @@ Public Class MainWin
     ' -------------------
 
     Private Sub Button12_MouseClick(sender As Object, e As MouseEventArgs) Handles Button12.MouseClick
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.Heywood Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.Heywood
         PlayerCityCur.Text = "Heywood"
 
         GeneratePricing()
+        Randomize()
         Dim var As Integer
         var = Int((100 * Rnd()) + 1)
         Select Case var
@@ -582,18 +640,23 @@ Public Class MainWin
     ' -------------------------
 
     Private Sub Button13_Click(sender As Object, e As EventArgs) Handles Button13.Click
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.CityCenter Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.CityCenter
         PlayerCityCur.Text = "City Center"
 
         GeneratePricing()
+        Randomize()
         Dim var As Integer
         var = Int((100 * Rnd()) + 1)
         Select Case var
@@ -616,18 +679,23 @@ Public Class MainWin
     ' Travel to Santo Dom
     ' -------------------------
     Private Sub Button14_Click(sender As Object, e As EventArgs) Handles Button14.Click
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.SantoDom Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.SantoDom
         PlayerCityCur.Text = "Santo Domingo"
 
         GeneratePricing()
+        Randomize()
         Dim var As Integer
         var = Int((100 * Rnd()) + 1)
         Select Case var
@@ -648,18 +716,23 @@ Public Class MainWin
     ' Travel to Westbrook
     ' -------------------------
     Private Sub Button15_Click(sender As Object, e As EventArgs) Handles Button15.Click
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.Westbrook Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.Westbrook
         PlayerCityCur.Text = "Westbrook"
 
         GeneratePricing()
+        Randomize()
         Dim var As Integer
         var = Int((100 * Rnd()) + 1)
         Select Case var
@@ -681,19 +754,23 @@ Public Class MainWin
     ' -------------------------
     Private Sub Button16_Click(sender As Object, e As EventArgs) Handles Button16.Click
         Dim var As Integer
-
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.Pacifica Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.Pacifica
         PlayerCityCur.Text = "Pacifica"
 
         GeneratePricing()
+        Randomize()
         var = Int((100 * Rnd()) + 1)
         Select Case var
             Case 91 To 100
@@ -705,6 +782,7 @@ Public Class MainWin
             Case Else
                 Exit Select
         End Select
+
         DebtCalc()
         SendEventText("> Traveled to Pacifica")
         UpdateGame()
@@ -714,22 +792,23 @@ Public Class MainWin
     ' -------------------------
     Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
         Dim var As Integer
-
-        Randomize()
-
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.Badlands Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.Badlands
         PlayerCityCur.Text = "City Center"
 
         GeneratePricing()
-
+        Randomize()
         var = Int((100 * Rnd()) + 1)
         Select Case var
             Case 91 To 100
@@ -742,7 +821,6 @@ Public Class MainWin
                 Exit Select
         End Select
 
-
         DebtCalc()
         SendEventText("> Traveled to Badlands")
         UpdateGame()
@@ -752,13 +830,17 @@ Public Class MainWin
     ' -------------------------
     Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
         Dim var As Integer
-        CheckForEndGame()
+        Dim var2 As Integer
+        var2 = CheckForEndGame()
+        If var2 = 1 Then
+            Exit Sub
+        End If
         If PlayerLocation = GameCities.Docks Then
-            SendEventText("Already here, choom.")
+            SendEventText("> Already here, choom.")
             Return
         End If
 
-        PlayerDay = PlayerDay + 1
+        PlayerDay += 1
         CurrentDay.Text = PlayerDay.ToString
         PlayerLocation = GameCities.Docks
         PlayerCityCur.Text = "The Docks"
@@ -777,8 +859,18 @@ Public Class MainWin
         End Select
 
         DebtCalc()
-        SendEventText("Traveled to the Docks")
+        SendEventText("> Traveled to the Docks")
         UpdateGame()
+    End Sub
+
+    Private Sub HighScoresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HighScoresToolStripMenuItem.Click
+        My.Computer.Audio.Stop()
+    End Sub
+
+    Public Sub StoreButton_Click(sender As Object, e As EventArgs) Handles StoreButton.Click
+        Dim OBJ As New Form1
+        OBJ.varCash = PlayerCash
+        OBJ.Show()
     End Sub
 
 

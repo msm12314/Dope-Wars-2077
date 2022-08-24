@@ -71,10 +71,11 @@ Partial Class MainWin
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.NewGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StopAudioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HighScoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutThisGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StoreButton = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TransactionsGroup.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
@@ -95,13 +96,13 @@ Partial Class MainWin
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(60, 20)
         Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "Debt"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Withdraw
         '
         Me.Withdraw.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Withdraw.Location = New System.Drawing.Point(3, 133)
+        Me.Withdraw.Location = New System.Drawing.Point(3, 131)
         Me.Withdraw.Name = "Withdraw"
         Me.Withdraw.Size = New System.Drawing.Size(60, 20)
         Me.Withdraw.TabIndex = 2
@@ -111,7 +112,7 @@ Partial Class MainWin
         'Button4
         '
         Me.Button4.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Button4.Location = New System.Drawing.Point(3, 107)
+        Me.Button4.Location = New System.Drawing.Point(3, 105)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(60, 20)
         Me.Button4.TabIndex = 3
@@ -121,7 +122,7 @@ Partial Class MainWin
         'Button5
         '
         Me.Button5.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Button5.Location = New System.Drawing.Point(3, 55)
+        Me.Button5.Location = New System.Drawing.Point(3, 53)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(60, 20)
         Me.Button5.TabIndex = 4
@@ -131,17 +132,17 @@ Partial Class MainWin
         'Button6
         '
         Me.Button6.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Button6.Location = New System.Drawing.Point(3, 81)
+        Me.Button6.Location = New System.Drawing.Point(3, 79)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(60, 20)
         Me.Button6.TabIndex = 5
-        Me.Button6.Text = "Old $"
+        Me.Button6.Text = "Prev $"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'Button7
         '
         Me.Button7.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Button7.Location = New System.Drawing.Point(3, 29)
+        Me.Button7.Location = New System.Drawing.Point(3, 27)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(60, 20)
         Me.Button7.TabIndex = 6
@@ -160,6 +161,7 @@ Partial Class MainWin
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.StoreButton)
         Me.Panel1.Controls.Add(Me.Button8)
         Me.Panel1.Controls.Add(Me.Button7)
         Me.Panel1.Controls.Add(Me.Button6)
@@ -171,7 +173,7 @@ Partial Class MainWin
         Me.Panel1.ForeColor = System.Drawing.Color.Black
         Me.Panel1.Location = New System.Drawing.Point(295, 16)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(66, 186)
+        Me.Panel1.Size = New System.Drawing.Size(66, 210)
         Me.Panel1.TabIndex = 8
         '
         'TransactionsGroup
@@ -185,7 +187,7 @@ Partial Class MainWin
         Me.TransactionsGroup.ForeColor = System.Drawing.Color.Lime
         Me.TransactionsGroup.Location = New System.Drawing.Point(6, 402)
         Me.TransactionsGroup.Name = "TransactionsGroup"
-        Me.TransactionsGroup.Size = New System.Drawing.Size(680, 208)
+        Me.TransactionsGroup.Size = New System.Drawing.Size(680, 232)
         Me.TransactionsGroup.TabIndex = 10
         Me.TransactionsGroup.TabStop = False
         Me.TransactionsGroup.Text = "Transactions"
@@ -313,6 +315,7 @@ Partial Class MainWin
         Me.DrugPriceListBox.ForeColor = System.Drawing.Color.Lime
         Me.DrugPriceListBox.FormattingEnabled = True
         Me.DrugPriceListBox.ItemHeight = 19
+        Me.DrugPriceListBox.Items.AddRange(New Object() {"0", "0", "0", "0", "0", "0", "0", "0"})
         Me.DrugPriceListBox.Location = New System.Drawing.Point(6, 22)
         Me.DrugPriceListBox.Name = "DrugPriceListBox"
         Me.DrugPriceListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -637,7 +640,7 @@ Partial Class MainWin
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ScoresToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.StopAudioToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(693, 24)
@@ -663,18 +666,18 @@ Partial Class MainWin
         Me.ExitGameToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
         Me.ExitGameToolStripMenuItem.Text = "Exit Game"
         '
-        'ScoresToolStripMenuItem
+        'StopAudioToolStripMenuItem
         '
-        Me.ScoresToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HighScoresToolStripMenuItem, Me.AboutThisGameToolStripMenuItem, Me.HelpToolStripMenuItem})
-        Me.ScoresToolStripMenuItem.Name = "ScoresToolStripMenuItem"
-        Me.ScoresToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
-        Me.ScoresToolStripMenuItem.Text = "Misc"
+        Me.StopAudioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HighScoresToolStripMenuItem, Me.AboutThisGameToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.StopAudioToolStripMenuItem.Name = "StopAudioToolStripMenuItem"
+        Me.StopAudioToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.StopAudioToolStripMenuItem.Text = "Misc"
         '
         'HighScoresToolStripMenuItem
         '
         Me.HighScoresToolStripMenuItem.Name = "HighScoresToolStripMenuItem"
         Me.HighScoresToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
-        Me.HighScoresToolStripMenuItem.Text = "High Scores"
+        Me.HighScoresToolStripMenuItem.Text = "Stop Audio"
         '
         'AboutThisGameToolStripMenuItem
         '
@@ -688,13 +691,24 @@ Partial Class MainWin
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(163, 22)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
+        'StoreButton
+        '
+        Me.StoreButton.Font = New System.Drawing.Font("Consolas", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.StoreButton.Location = New System.Drawing.Point(3, 183)
+        Me.StoreButton.Name = "StoreButton"
+        Me.StoreButton.Size = New System.Drawing.Size(60, 20)
+        Me.StoreButton.TabIndex = 8
+        Me.StoreButton.Text = "Shop"
+        Me.StoreButton.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.StoreButton.UseVisualStyleBackColor = True
+        '
         'MainWin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoSize = True
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(693, 616)
+        Me.ClientSize = New System.Drawing.Size(693, 638)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox3)
@@ -762,7 +776,7 @@ Partial Class MainWin
     Friend WithEvents FileToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NewGameToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitGameToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ScoresToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StopAudioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HighScoresToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AboutThisGameToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
@@ -779,4 +793,5 @@ Partial Class MainWin
     Friend WithEvents LifeBar1 As ProgressBar
     Friend WithEvents PlayerCityCur As Label
     Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents StoreButton As Button
 End Class

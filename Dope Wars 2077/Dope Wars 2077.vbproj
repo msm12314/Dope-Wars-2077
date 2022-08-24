@@ -7,6 +7,7 @@
     <StartupObject>Sub Main</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <Title>Drug Wars 2077</Title>
   </PropertyGroup>
 
   <ItemGroup>
