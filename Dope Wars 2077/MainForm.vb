@@ -868,7 +868,7 @@ Public Class MainWin
     End Sub
 
     Public Sub StoreButton_Click(sender As Object, e As EventArgs) Handles StoreButton.Click
-        Dim OBJ As New Form1
+        Dim OBJ As New ShopForm
         OBJ.varCash = PlayerCash
         OBJ.Show()
     End Sub
